@@ -17,5 +17,6 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run linter check
-        run: make lint
+      - name: Run linter
+        run: |
+          make lint
