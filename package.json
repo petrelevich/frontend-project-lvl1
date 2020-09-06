@@ -19,7 +19,8 @@
     "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even",
     "brain-calc": "bin/brain-calc",
-    "brain-gcd": "bin/brain-gcd"
+    "brain-gcd": "bin/brain-gcd",
+    "brain-progression": "bin/brain-progression"
   },
   "type": "module",
   "homepage": "https://github.com/petrelevich/frontend-project-lvl1#readme",

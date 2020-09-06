@@ -7,7 +7,9 @@ brain-even:
 brain-calc:
 	bin/brain-calc
 brain-gcd:
-	bin/brain-gcd	
+	bin/brain-gcd
+brain-progression:
+	bin/brain-progression		
 publish:
 	npm publish --dry-run
 lint: 
