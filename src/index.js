@@ -2,6 +2,8 @@ import readlineSync from 'readline-sync';
 import { questionOutput as calcQuestionOutput, playRound as calcPlayRound } from './games/brain-calc.js';
 import { questionOutput as gcdQuestionOutput, playRound as gcdPlayRound } from './games/brain-gcd.js';
 import { questionOutput as progressionQuestionOutput, playRound as progressionPlayRound } from './games/brain-progression.js';
+import { questionOutput as primeQuestionOutput, playRound as primePlayRound } from './games/brain-prime.js';
+
 
 const inputUserName = () => readlineSync.question('May I have your name? ');
 
@@ -15,6 +17,8 @@ const getQuestionOutput = (gameName) => {
       return gcdQuestionOutput;
     case 'brain-progression':
       return progressionQuestionOutput;
+    case 'brain-prime':
+      return primeQuestionOutput;
     default:
       throw new Error(`Unknown game name: ${gameName}`);
   }
@@ -28,6 +32,8 @@ const getPlayRound = (gameName) => {
       return gcdPlayRound;
     case 'brain-progression':
       return progressionPlayRound;
+    case 'brain-prime':
+      return primePlayRound;
     default:
       throw new Error(`Unknown game name: ${gameName}`);
   }
