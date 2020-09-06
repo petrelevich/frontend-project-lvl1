@@ -4,7 +4,6 @@ import { questionOutput as gcdQuestionOutput, playRound as gcdPlayRound } from '
 import { questionOutput as progressionQuestionOutput, playRound as progressionPlayRound } from './games/brain-progression.js';
 import { questionOutput as primeQuestionOutput, playRound as primePlayRound } from './games/brain-prime.js';
 
-
 const inputUserName = () => readlineSync.question('May I have your name? ');
 
 const rounds = 3;
