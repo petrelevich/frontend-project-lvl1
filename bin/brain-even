@@ -1,1 +1,1 @@
-node src/brain-even-game.js
+node src/index.js brain-even

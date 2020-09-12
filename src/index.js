@@ -4,6 +4,8 @@ import { questionOutput as gcdQuestionOutput, playRound as gcdPlayRound } from '
 import { questionOutput as progressionQuestionOutput, playRound as progressionPlayRound } from './games/brain-progression.js';
 import { questionOutput as primeQuestionOutput, playRound as primePlayRound } from './games/brain-prime.js';
 
+import { questionOutput as evenQuestionOutput, playRound as evenPlayRound } from './games/brain-even.js';
+
 const inputUserName = () => readlineSync.question('May I have your name? ');
 
 const rounds = 3;
@@ -18,6 +20,8 @@ const getQuestionOutput = (gameName) => {
       return progressionQuestionOutput;
     case 'brain-prime':
       return primeQuestionOutput;
+    case 'brain-even':
+      return evenQuestionOutput;
     default:
       throw new Error(`Unknown game name: ${gameName}`);
   }
@@ -33,14 +37,14 @@ const getPlayRound = (gameName) => {
       return progressionPlayRound;
     case 'brain-prime':
       return primePlayRound;
+    case 'brain-even':
+      return evenPlayRound;
     default:
       throw new Error(`Unknown game name: ${gameName}`);
   }
 };
 
-const game = () => {
-  const gameName = process.argv.slice(2)[0];
-
+export default (gameName) => {
   console.log('Welcome to the Brain Games!');
   const userName = inputUserName();
   console.log(`Hello, ${userName}!`);
@@ -58,5 +62,3 @@ const game = () => {
 
   console.log(`Congratulations, ${userName}!`);
 };
-
-game();
