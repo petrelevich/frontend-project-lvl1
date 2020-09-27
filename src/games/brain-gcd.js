@@ -1,5 +1,4 @@
 const getRandomInt = () => Math.floor(Math.random() * 100);
-const questionOutput = (userOutput) => userOutput('Find the greatest common divisor of given numbers.');
 
 const calcAnswer = (inVal1, inVal2) => {
   let val1 = inVal1;
@@ -12,15 +11,14 @@ const calcAnswer = (inVal1, inVal2) => {
   return val1;
 };
 
-const playRound = (userOutput, userInput) => {
+export default () => {
   const random1 = getRandomInt();
   const random2 = getRandomInt();
-  const correctAnswer = calcAnswer(random1, random2);
+  const answer = calcAnswer(random1, random2);
 
-  userOutput(`Question: ${random1} ${random2}`);
+  const task = 'Find the greatest common divisor of given numbers.';
+  const question = `Question: ${random1} ${random2}`;
+  const correctAnswer = answer.toString(10);
 
-  return userInput('Your answer: ').then((answer) => parseInt(answer, 10) === correctAnswer)
-    .catch((msg) => `Error:${msg}`);
+  return { task, question, correctAnswer };
 };
-
-export { questionOutput, playRound };

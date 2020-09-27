@@ -1,7 +1,5 @@
 const getRandomInt = () => Math.floor(Math.random() * 100);
 
-const questionOutput = (userOutput) => userOutput('Answer "yes" if given number is prime. Otherwise answer "no".');
-
 //  to avoid value = 1 we perform +1
 const getNumer = () => getRandomInt() + 1;
 
@@ -14,14 +12,13 @@ const calcAnswer = (number) => {
   return 'yes';
 };
 
-const playRound = (userOutput, userInput) => {
+export default () => {
   const number = getNumer();
-  const correctAnswer = calcAnswer(number);
+  const answer = calcAnswer(number);
 
-  userOutput(`Question: ${number}`);
+  const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+  const question = `Question: ${number}`;
+  const correctAnswer = answer;
 
-  return userInput('Your answer: ').then((answer) => answer === correctAnswer)
-    .catch((msg) => `Error:${msg}`);
+  return { task, question, correctAnswer };
 };
-
-export { questionOutput, playRound };

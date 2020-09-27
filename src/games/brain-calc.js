@@ -1,7 +1,5 @@
 const getRandomInt = () => Math.floor(Math.random() * 100);
 
-const questionOutput = (userOutput) => userOutput('What is the result of the expression?');
-
 const plus = '+';
 const minus = '-';
 const mult = '*';
@@ -24,18 +22,14 @@ const calcAnswer = (val1, val2, oper) => {
   }
 };
 
-const playRound = (userOutput, userInput) => {
+export default () => {
   const random1 = getRandomInt();
   const random2 = getRandomInt();
   const operation = getOperation();
-  const correctAnswer = calcAnswer(random1, random2, operation);
 
-  userOutput(`Question: ${random1} ${operation} ${random2}`);
-  return userInput('Your answer: ').then((userAnswer) => {
-    const answer = parseInt(userAnswer, 10);
-    return answer === correctAnswer;
-  })
-    .catch((msg) => `Error:${msg}`);
+  const task = 'What is the result of the expression?';
+  const question = `Question: ${random1} ${operation} ${random2}`;
+  const correctAnswer = calcAnswer(random1, random2, operation).toString(10);
+
+  return { task, question, correctAnswer };
 };
-
-export { questionOutput, playRound };

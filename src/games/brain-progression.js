@@ -1,7 +1,5 @@
 const getRandomInt = () => Math.floor(Math.random() * 10);
 
-const questionOutput = (userOutput) => userOutput('What number is missing in the progression?');
-
 const progressionSize = 10;
 
 const makeProgression = () => {
@@ -16,17 +14,16 @@ const makeProgression = () => {
   return progression;
 };
 
-const playRound = (userOutput, userInput) => {
+export default () => {
   const progression = makeProgression();
   const hiddenIdx = getRandomInt() % progressionSize;
-  const correctAnswer = progression[hiddenIdx];
+  const answer = progression[hiddenIdx];
   progression[hiddenIdx] = '..';
   const progressionAsString = progression.join(' ');
 
-  userOutput(`Question: ${progressionAsString}`);
+  const task = 'What number is missing in the progression?';
+  const question = `Question: ${progressionAsString}`;
+  const correctAnswer = answer.toString(10);
 
-  return userInput('Your answer: ').then((answer) => parseInt(answer, 10) === correctAnswer)
-    .catch((msg) => `Error:${msg}`);
+  return { task, question, correctAnswer };
 };
-
-export { questionOutput, playRound };
