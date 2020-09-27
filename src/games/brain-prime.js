@@ -1,9 +1,6 @@
-import readlineSync from 'readline-sync';
-
 const getRandomInt = () => Math.floor(Math.random() * 100);
-const inputAnswer = () => readlineSync.question('Your answer: ');
 
-const questionOutput = () => console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+const questionOutput = (userOutput) => userOutput('Answer "yes" if given number is prime. Otherwise answer "no".');
 
 //  to avoid value = 1 we perform +1
 const getNumer = () => getRandomInt() + 1;
@@ -17,14 +14,14 @@ const calcAnswer = (number) => {
   return 'yes';
 };
 
-const playRound = () => {
+const playRound = (userOutput, userInput) => {
   const number = getNumer();
   const correctAnswer = calcAnswer(number);
 
-  console.log(`Question: ${number}`);
-  const answer = inputAnswer();
+  userOutput(`Question: ${number}`);
 
-  return answer === correctAnswer;
+  return userInput('Your answer: ').then((answer) => answer === correctAnswer)
+    .catch((msg) => `Error:${msg}`);
 };
 
 export { questionOutput, playRound };

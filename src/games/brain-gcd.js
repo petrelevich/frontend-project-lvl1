@@ -1,9 +1,5 @@
-import readlineSync from 'readline-sync';
-
 const getRandomInt = () => Math.floor(Math.random() * 100);
-const inputAnswer = () => readlineSync.question('Your answer: ');
-
-const questionOutput = () => console.log('Find the greatest common divisor of given numbers.');
+const questionOutput = (userOutput) => userOutput('Find the greatest common divisor of given numbers.');
 
 const calcAnswer = (inVal1, inVal2) => {
   let val1 = inVal1;
@@ -16,15 +12,15 @@ const calcAnswer = (inVal1, inVal2) => {
   return val1;
 };
 
-const playRound = () => {
+const playRound = (userOutput, userInput) => {
   const random1 = getRandomInt();
   const random2 = getRandomInt();
   const correctAnswer = calcAnswer(random1, random2);
 
-  console.log(`Question: ${random1} ${random2}`);
-  const answer = parseInt(inputAnswer(), 10);
+  userOutput(`Question: ${random1} ${random2}`);
 
-  return answer === correctAnswer;
+  return userInput('Your answer: ').then((answer) => parseInt(answer, 10) === correctAnswer)
+    .catch((msg) => `Error:${msg}`);
 };
 
 export { questionOutput, playRound };

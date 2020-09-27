@@ -1,9 +1,6 @@
-import readlineSync from 'readline-sync';
-
 const getRandomInt = () => Math.floor(Math.random() * 100);
-const inputAnswer = () => readlineSync.question('Your answer: ');
 
-const questionOutput = () => console.log('What is the result of the expression?');
+const questionOutput = (userOutput) => userOutput('What is the result of the expression?');
 
 const plus = '+';
 const minus = '-';
@@ -27,16 +24,18 @@ const calcAnswer = (val1, val2, oper) => {
   }
 };
 
-const playRound = () => {
+const playRound = (userOutput, userInput) => {
   const random1 = getRandomInt();
   const random2 = getRandomInt();
   const operation = getOperation();
   const correctAnswer = calcAnswer(random1, random2, operation);
 
-  console.log(`Question: ${random1} ${operation} ${random2}`);
-  const answer = parseInt(inputAnswer(), 10);
-
-  return answer === correctAnswer;
+  userOutput(`Question: ${random1} ${operation} ${random2}`);
+  return userInput('Your answer: ').then((userAnswer) => {
+    const answer = parseInt(userAnswer, 10);
+    return answer === correctAnswer;
+  })
+    .catch((msg) => `Error:${msg}`);
 };
 
 export { questionOutput, playRound };
