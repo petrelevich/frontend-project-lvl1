@@ -1,12 +1,14 @@
-const randomInt = () => Math.floor(Math.random() * 100);
+import getRandomInt from './generator.js';
 
-export default () => {
-  const random = randomInt();
-  const even = random % 2 === 0;
+const getTask = () => 'Answer "yes" if the number is even, otherwise answer "no".';
 
-  const task = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const question = `Question: ${random}`;
-  const correctAnswer = even ? 'yes' : 'no';
+const getDataForRound = () => {
+  const random = getRandomInt();
 
-  return { task, question, correctAnswer };
+  const question = random;
+  const correctAnswer = (random % 2 === 0) ? 'yes' : 'no';
+
+  return { question, correctAnswer };
 };
+
+export { getTask, getDataForRound };

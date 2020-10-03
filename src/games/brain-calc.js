@@ -1,12 +1,12 @@
-const getRandomInt = () => Math.floor(Math.random() * 100);
+import getRandomInt from './generator.js';
 
 const plus = '+';
 const minus = '-';
 const mult = '*';
 
 const getOperation = () => {
-  const operationsArray = [plus, minus, mult];
-  return operationsArray[getRandomInt() % operationsArray.length];
+  const operations = [plus, minus, mult];
+  return operations[getRandomInt() % operations.length];
 };
 
 const calcAnswer = (val1, val2, oper) => {
@@ -22,14 +22,17 @@ const calcAnswer = (val1, val2, oper) => {
   }
 };
 
-export default () => {
+const getTask = () => 'What is the result of the expression?';
+
+const getDataForRound = () => {
   const random1 = getRandomInt();
   const random2 = getRandomInt();
   const operation = getOperation();
 
-  const task = 'What is the result of the expression?';
-  const question = `Question: ${random1} ${operation} ${random2}`;
+  const question = `${random1} ${operation} ${random2}`;
   const correctAnswer = calcAnswer(random1, random2, operation).toString(10);
 
-  return { task, question, correctAnswer };
+  return { question, correctAnswer };
 };
+
+export { getTask, getDataForRound };

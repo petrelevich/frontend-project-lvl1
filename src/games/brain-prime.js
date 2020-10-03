@@ -1,24 +1,30 @@
-const getRandomInt = () => Math.floor(Math.random() * 100);
+import getRandomInt from './generator.js';
 
 //  to avoid value = 1 we perform +1
 const getNumer = () => getRandomInt() + 1;
 
-const calcAnswer = (number) => {
-  for (let i = 2; i < number; i += 1) {
+const isPrime = (number) => {
+  if (number < 2) {
+    return false;
+  }
+
+  for (let i = 2; i < number / 2; i += 1) {
     if (number % i === 0) {
-      return 'no';
+      return false;
     }
   }
-  return 'yes';
+  return true;
 };
 
-export default () => {
+const getTask = () => 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+const getDataForRound = () => {
   const number = getNumer();
-  const answer = calcAnswer(number);
 
-  const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const question = `Question: ${number}`;
-  const correctAnswer = answer;
+  const question = number;
+  const correctAnswer = isPrime(number) ? 'yes' : 'no';
 
-  return { task, question, correctAnswer };
+  return { question, correctAnswer };
 };
+
+export { getTask, getDataForRound };

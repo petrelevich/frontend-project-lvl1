@@ -1,6 +1,6 @@
-const getRandomInt = () => Math.floor(Math.random() * 100);
+import getRandomInt from './generator.js';
 
-const calcAnswer = (inVal1, inVal2) => {
+const getGcd = (inVal1, inVal2) => {
   let val1 = inVal1;
   let val2 = inVal2;
   while (val2) {
@@ -11,14 +11,17 @@ const calcAnswer = (inVal1, inVal2) => {
   return val1;
 };
 
-export default () => {
+const getTask = () => 'Find the greatest common divisor of given numbers.';
+
+const getDataForRound = () => {
   const random1 = getRandomInt();
   const random2 = getRandomInt();
-  const answer = calcAnswer(random1, random2);
+  const answer = getGcd(random1, random2);
 
-  const task = 'Find the greatest common divisor of given numbers.';
-  const question = `Question: ${random1} ${random2}`;
+  const question = `${random1} ${random2}`;
   const correctAnswer = answer.toString(10);
 
-  return { task, question, correctAnswer };
+  return { question, correctAnswer };
 };
+
+export { getTask, getDataForRound };
