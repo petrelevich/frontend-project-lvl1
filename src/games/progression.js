@@ -1,10 +1,8 @@
-import getRandomInt from './generator.js';
+import getRandomInt from '../utils/generator.js';
 
 const progressionSize = 10;
 
-const makeProgression = (size) => {
-  const delta = getRandomInt(10);
-  const startElement = getRandomInt(10);
+const makeProgression = (size, delta, startElement) => {
   const progression = [];
   for (let idx = 0; idx < size; idx += 1) {
     progression.push(startElement + delta * idx);
@@ -12,10 +10,12 @@ const makeProgression = (size) => {
   return progression;
 };
 
-const getTask = () => 'What number is missing in the progression?';
+const task = 'What number is missing in the progression?';
 
 const getDataForRound = () => {
-  const progression = makeProgression(progressionSize);
+  const delta = getRandomInt(0, 10);
+  const startElement = getRandomInt(0, 10);
+  const progression = makeProgression(progressionSize, delta, startElement);
   const hiddenIdx = getRandomInt() % progressionSize;
   const answer = progression[hiddenIdx];
   progression[hiddenIdx] = '..';
@@ -27,4 +27,4 @@ const getDataForRound = () => {
   return { question, correctAnswer };
 };
 
-export { getTask, getDataForRound };
+export { task, getDataForRound };

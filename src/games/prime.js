@@ -1,7 +1,7 @@
-import getRandomInt from './generator.js';
+import getRandomInt from '../utils/generator.js';
 
 //  to avoid value = 1 we perform +1
-const getNumer = () => getRandomInt() + 1;
+const getNumer = () => getRandomInt(1);
 
 const isPrime = (number) => {
   if (number < 2) {
@@ -16,7 +16,7 @@ const isPrime = (number) => {
   return true;
 };
 
-const getTask = () => 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const getDataForRound = () => {
   const number = getNumer();
@@ -27,4 +27,4 @@ const getDataForRound = () => {
   return { question, correctAnswer };
 };
 
-export { getTask, getDataForRound };
+export { task, getDataForRound };

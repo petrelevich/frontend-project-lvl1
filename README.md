@@ -17,3 +17,17 @@ https://asciinema.org/a/LIDZMgOLa3hKoMK3pcl6PpxiL
 
 asciinema for brain-prime:
 https://asciinema.org/a/QnLovLbV7GtlIDuO09j9Tuelt
+
+Для установки приложения выполните:
+  make install
+
+Доступные игры:
+
+brain-even        "Четный/Нечетный"
+brain-calc        "Счет в уме" 
+brain-gcd         "Наибольший общий делитель"
+brain-progression "Арифметическая прогрессия"
+brain-prime       "Простое число"
+
+Пример запуска игры:
+brain-prime

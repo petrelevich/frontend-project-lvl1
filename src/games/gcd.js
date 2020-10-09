@@ -1,4 +1,4 @@
-import getRandomInt from './generator.js';
+import getRandomInt from '../utils/generator.js';
 
 const getGcd = (inVal1, inVal2) => {
   let val1 = inVal1;
@@ -11,7 +11,7 @@ const getGcd = (inVal1, inVal2) => {
   return val1;
 };
 
-const getTask = () => 'Find the greatest common divisor of given numbers.';
+const task = 'Find the greatest common divisor of given numbers.';
 
 const getDataForRound = () => {
   const random1 = getRandomInt();
@@ -24,4 +24,4 @@ const getDataForRound = () => {
   return { question, correctAnswer };
 };
 
-export { getTask, getDataForRound };
+export { task, getDataForRound };
