@@ -19,10 +19,8 @@ const isPrime = (number) => {
 const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const getDataForRound = () => {
-  const number = getNumer();
-
-  const question = number;
-  const correctAnswer = isPrime(number) ? 'yes' : 'no';
+  const question = getNumer();
+  const correctAnswer = isPrime(question) ? 'yes' : 'no';
 
   return { question, correctAnswer };
 };
